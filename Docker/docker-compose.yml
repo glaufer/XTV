@@ -1,0 +1,44 @@
+version: "3.2"
+services:
+  php:
+    build: './php/'
+    container_name: XML-php
+    networks:
+      - backend
+    working_dir: /var/www/html/
+    volumes:
+      - ../:/var/www/html/
+    ports:
+      - "30011:80"
+
+  mysql:
+    build: './sql/'
+    container_name: XTV-mysql
+    networks:
+      - backend
+    restart: always
+    # volumes:
+    #   - ./sql:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=xtv
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: XTV-phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    networks:
+      - backend
+    ports:
+      - "30012:80"
+    environment:
+      - PMA_HOST=XTV-mysql
+      - PMA_PORT=3306
+
+networks:
+  frontend:
+  backend:
