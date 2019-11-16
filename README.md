@@ -5,10 +5,10 @@ A website project for KTH's course XML for Publishing (DM2517).
 
 ## Local development setup
 **Step 1**
-> Begin by creating a docker account [here][1]. You must have an account to download docker.
+> Begin by creating a docker account [here](https://hub.docker.com/signup). You must have an account to download docker.
 
 **Step 2**
-> Download docker for desktop [here][2] after you have logged in.
+> Download docker for desktop [here](https://hub.docker.com/?overlay=onboarding) after you have logged in.
 
 **Step 3**
 > Go to the "Docker" folder in this project and run  
@@ -23,7 +23,3 @@ A website project for KTH's course XML for Publishing (DM2517).
 
 **Note**  
 Remember to export the database if changes is made and replace the exported file with the `Docker/sql/xtv.sql` file.
-
-
-[1]: (https://hub.docker.com/signup)
-[2]: (https://hub.docker.com/?overlay=onboarding)
