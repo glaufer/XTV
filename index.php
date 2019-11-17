@@ -1,3 +1,8 @@
+<?php
+    @include_once 'Models/XTVData.php';
+    $xtvData = new XTVData();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,5 +13,21 @@
 </head>
 <body>
     <h1>XTV: Hello World</h1>
+    <h2>Channels</h2>
+    <pre>
+    <?= print_r($xtvData->getAllChannels()) ?>
+    </pre>
+    <h2>Broadcasts</h2>
+    <pre>
+    <?= print_r($xtvData->getAllBroadcasts()) ?>
+    </pre>
+    <h2>Programs</h2>
+    <pre>
+    <?= print_r($xtvData->getAllPrograms()) ?>
+    </pre>
+    <h2>Episodes</h2>
+    <pre>
+        <?= print_r($xtvData->getAllEpisodes()) ?>
+    </pre>
 </body>
 </html>
