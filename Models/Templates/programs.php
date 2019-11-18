@@ -2,15 +2,6 @@
 
 class Program {
 
-    const SELECT = "
-        programs.nameSE,
-        programs.nameEN,
-        programs.subnameSE,
-        programs.subnameEN,
-        programs.descriptionSE,
-        programs.descriptionEN
-    ";
-
     /** @var string $nameSE */
     public $nameSE;
     

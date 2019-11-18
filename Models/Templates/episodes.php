@@ -1,19 +1,6 @@
 <?php
 
     class Episode {
-        const SELECT = "
-            episodes.id,
-            episodes.programID,
-            episodes.season,
-            episodes.epNumber,
-            episodes.prodYear,
-            episodes.duration,
-            episodes.descriptionSE,
-            episodes.descriptionEN,
-            episodes.language,
-            episodes.subtitles
-        ";
-
         /** @var string $id */
         public $id;
 

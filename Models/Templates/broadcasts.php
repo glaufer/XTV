@@ -1,17 +1,6 @@
 <?php
 
     class Broadcast {
-        const SELECT = "
-            broadcasts.id,
-            broadcasts.channelID,
-            broadcasts.episodeID,
-            broadcasts.start,
-            broadcasts.end,
-            broadcasts.outsideSE,
-            broadcasts.live,
-            broadcasts.reprise
-        ";
-
         /** @var string $id */
         public $id;
 
