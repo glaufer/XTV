@@ -15,15 +15,15 @@
     <h1>XTV: Hello World</h1>
     <h2>Channels</h2>
     <pre>
-    <?= print_r($xtvData->getAllChannels()) ?>
+        <?= print_r($xtvData->getAllChannels()) ?>
     </pre>
     <h2>Broadcasts</h2>
     <pre>
-    <?= print_r($xtvData->getAllBroadcasts()) ?>
+        <?= print_r($xtvData->getAllBroadcasts()) ?>
     </pre>
     <h2>Programs</h2>
     <pre>
-    <?= print_r($xtvData->getAllPrograms()) ?>
+        <?= print_r($xtvData->getAllPrograms()) ?>
     </pre>
     <h2>Episodes</h2>
     <pre>
