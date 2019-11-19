@@ -36,7 +36,7 @@ class XTVData extends DatabaseModel {
     public function getAllEpisodes() {
         $result = $this->dbSelectAllSimple(
             'SELECT *
-            FROM episodes',
+            FROM episodes'
         );
         return $this->createObjectsFromSQL($result, 'Episode');
     }
@@ -47,7 +47,7 @@ class XTVData extends DatabaseModel {
     public function getAllChannels() {
         $result = $this->dbSelectAllSimple(
             'SELECT *
-            FROM channels',
+            FROM channels'
         );
         return $this->createObjectsFromSQL($result, 'Channel');
     }
@@ -58,7 +58,7 @@ class XTVData extends DatabaseModel {
     public function getAllPrograms() {
         $result = $this->dbSelectAllSimple(
             'SELECT *
-            FROM programs',
+            FROM programs'
         );
         return $this->createObjectsFromSQL($result, 'Program');
     }
@@ -69,7 +69,7 @@ class XTVData extends DatabaseModel {
     public function getAllBroadcasts() {
         $result = $this->dbSelectAllSimple(
             'SELECT *
-            FROM broadcasts',
+            FROM broadcasts'
         );
         return $this->createObjectsFromSQL($result, 'Broadcast');
     }
