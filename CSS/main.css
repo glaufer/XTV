@@ -1,0 +1,19 @@
+
+* {
+    font-family: Roboto;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+.soft-container {
+    border-radius: 15px;
+    background-color: #f0f0f0;
+    border: 2px solid #ddd;
+}
