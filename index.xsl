@@ -11,74 +11,45 @@
             <meta http-equiv="X-UA-Compatible" content="ie=edge" />
             <link rel="stylesheet" href="CSS/main.css" />
             <link rel="stylesheet" href="CSS/table.css" />
-            <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet" /> -->
+            <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap" rel="stylesheet" />
             <title>XTV</title>
         </head>
         <body>
-            <xsl:apply-templates/>
             <div class="timeline-wrapper">
                 <div class="timeline-axis">
                 </div>
                 <div class="timeline-container">
-                    <div class="timeline__channel">
-                        <div class="channel-title">
-                            XTV 1
-                        </div>
-                        <div style="height: 250px" class="broadcast-container xtv1-color">
-                            <span class="broadcast-time">14:00</span>
-                            <h2 class="boradcast-title">Rapport</h2>
-                        </div>
-                        <div class="broadcast-container xtv1-color">
-                            <span class="broadcast-time">14:30</span>
-                            <h2 class="boradcast-title">Väder</h2>
-                        </div>
-                    </div>
-                    <div class="timeline__channel">
-                        <div class="channel-title">
-                            XTV 2
-                        </div>
-                        <div class="broadcast-container xtv2-color">
-                            <span class="broadcast-time">14:00</span>
-                            <h2 class="boradcast-title">Rapport</h2>
-                        </div>
-                        <div style="height: 250px" class="broadcast-container xtv2-color">
-                            <span class="broadcast-time">14:30</span>
-                            <h2 class="boradcast-title">Väder</h2>
-                        </div>
-                        <div style="height: 200px" class="broadcast-container xtv2-color">
-                            <span class="broadcast-time">14:30</span>
-                            <h2 class="boradcast-title">Väder</h2>
-                        </div>
-                    </div>
-                    <div class="timeline__channel">
-                        <div class="channel-title">
-                            XTV 3
-                        </div>
-                        <div style="height: 350px" class="broadcast-container xtv3-color">
-                            <span class="broadcast-time">14:00</span>
-                            <h2 class="boradcast-title">Rapport</h2>
-                        </div>
-                        <div class="broadcast-container xtv3-color">
-                            <span class="broadcast-time">14:30</span>
-                            <h2 class="boradcast-title">Väder</h2>
-                        </div>
-                    </div>
+                    <xsl:apply-templates/>
                 </div>
             </div>
         </body>
     </html>
     </xsl:template>
 
-    <xsl:template match="programs/program">
-        <p>
-            <xsl:value-of select="@nameSE"/>
-        </p>
+    <xsl:template match="channels/channel">
+        <div class="timeline__channel {@id}">
+            <div class="channel-title">
+                <xsl:value-of select="@name"/>
+            </div>
+            <xsl:apply-templates match="broadcasts/broadcast"/>
+        </div>
     </xsl:template>
 
     <xsl:template match="broadcasts/broadcast">
-        <p>
-            <xsl:value-of select="@nameSE"/>
-        </p>
+        <xsl:variable name="episodeID" select="@episodeID"/>
+        <xsl:variable name="episodeData" select="//episode[@id=$episodeID]"/>
+        <div style="height: {3 * $episodeData/@duration}px" id="{@id}" class="broadcast-container xtv1-color">
+            <span class="broadcast-time">
+                <xsl:value-of select="substring(start, 12, 5)"/>
+            </span>
+            <h2 class="broadcast-title">
+                <xsl:value-of select="$episodeData/../../@nameSE"/>
+            </h2>
+        </div>
     </xsl:template>
+
+    <xsl:template match="programs">
+    </xsl:template>
+
 
 </xsl:stylesheet>
