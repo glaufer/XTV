@@ -25,9 +25,7 @@ class DatabaseModel {
     private function connectToDatabase() 
     {
         $this->connection = new PDO(
-            'mysql:host=' . SQLConfig::DBHost . 
-            ';dbname=' . SQLConfig::DBName . 
-            ';charset=utf8',
+            'mysql:host=127.0.0.1;dbname=dm2517;charset=utf8',
             SQLConfig::username,
             SQLConfig::password
         );
@@ -74,7 +72,7 @@ class DatabaseModel {
         $result = $stmt->fetchAll($fetchType);
 
         if(count($result) == 0) {
-            return false;
+            return array();
         }
 
         return $result;

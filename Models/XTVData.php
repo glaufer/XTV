@@ -5,6 +5,7 @@
 @require_once 'Templates/channels.php';
 @require_once 'Templates/programs.php';
 @require_once 'Templates/broadcasts.php';
+@require_once 'Templates/reprises.php';
 
 class XTVData extends DatabaseModel {
     public function __construct()
@@ -42,7 +43,7 @@ class XTVData extends DatabaseModel {
     }
 
     /**
-     * @return Channel[] Al the channels
+     * @return Channel[] All the channels
      */
     public function getAllChannels() {
         $result = $this->dbSelectAllSimple(
@@ -53,7 +54,7 @@ class XTVData extends DatabaseModel {
     }
 
     /**
-     * @return Program[] Al the channels
+     * @return Program[] All the programs
      */
     public function getAllPrograms() {
         $result = $this->dbSelectAllSimple(
@@ -64,7 +65,7 @@ class XTVData extends DatabaseModel {
     }
 
     /**
-     * @return Broadcast[] Al the channels
+     * @return Broadcast[] All the broadcasts
      */
     public function getAllBroadcasts() {
         $result = $this->dbSelectAllSimple(
@@ -72,5 +73,49 @@ class XTVData extends DatabaseModel {
             FROM broadcasts'
         );
         return $this->createObjectsFromSQL($result, 'Broadcast');
+    }
+
+    /**
+     * @return Broadcast[] All broadcasts of channel
+     */
+    public function getChBroadcasts($channelID) {
+        $result = $this->dbSelectAllPrepared(
+            'SELECT *
+            FROM broadcasts WHERE channelID = ?' ,array($channelID)
+        );
+        return $this->createObjectsFromSQL($result, 'Broadcast');
+    }
+
+    /**
+     * @return Broadcast[] All episodes of program
+     */
+    public function getPrEpisodes($programID) {
+        $result = $this->dbSelectAllPrepared(
+            'SELECT *
+            FROM episodes WHERE programID = ?' ,array($programID)
+        );
+        return $this->createObjectsFromSQL($result, 'Episode');
+    }
+
+    /**
+     * @return Reprise[] All the reprises
+     */
+    public function getAllReprises() {
+        $result = $this->dbSelectAllSimple(
+            'SELECT DISTINCT originalID, 1 as repriseID
+            FROM reprises'
+        );
+        return $this->createObjectsFromSQL($result, 'Reprise');
+    }
+
+    /**
+     * @return Reprise[] All the reprises for a broadcast
+     */
+    public function getBrReprises($originalID) {
+        $result = $this->dbSelectAllPrepared(
+            'SELECT originalID, repriseID
+            FROM reprises WHERE originalID = ?',array($originalID)
+        );
+        return $this->createObjectsFromSQL($result, 'Reprise');
     }
 }

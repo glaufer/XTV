@@ -2,6 +2,9 @@
 
 class Program {
 
+    /** @var string $id */
+    public $id;
+
     /** @var string $nameSE */
     public $nameSE;
     
@@ -23,6 +26,7 @@ class Program {
     
     public function __construct($queryRow)
     {
+        $this->id = $queryRow->id;
         $this->nameSE = $queryRow->nameSE;
         $this->nameEN = $queryRow->nameEN;
         $this->subnameSE = $queryRow->subnameSE;
