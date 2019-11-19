@@ -81,7 +81,8 @@ class XTVData extends DatabaseModel {
     public function getChBroadcasts($channelID) {
         $result = $this->dbSelectAllPrepared(
             'SELECT *
-            FROM broadcasts WHERE channelID = ?' ,array($channelID)
+            FROM broadcasts 
+            WHERE channelID = ?', array($channelID)
         );
         return $this->createObjectsFromSQL($result, 'Broadcast');
     }
@@ -92,7 +93,8 @@ class XTVData extends DatabaseModel {
     public function getPrEpisodes($programID) {
         $result = $this->dbSelectAllPrepared(
             'SELECT *
-            FROM episodes WHERE programID = ?' ,array($programID)
+            FROM episodes 
+            WHERE programID = ?', array($programID)
         );
         return $this->createObjectsFromSQL($result, 'Episode');
     }
@@ -114,7 +116,8 @@ class XTVData extends DatabaseModel {
     public function getBrReprises($originalID) {
         $result = $this->dbSelectAllPrepared(
             'SELECT originalID, repriseID
-            FROM reprises WHERE originalID = ?',array($originalID)
+            FROM reprises 
+            WHERE originalID = ?', array($originalID)
         );
         return $this->createObjectsFromSQL($result, 'Reprise');
     }

@@ -18,17 +18,16 @@
                 ?>
                     <channel id="<?= $ch->id ?>" name="<?= $ch->name ?>">
                         <broadcasts>
-                        <?php
-                            foreach ($broadcastinchannel as $b) {
-                                ?>
-                                    <broadcast id="<?= $b->id ?>" episodeID="<?= $b->episodeID ?>" outsideSE="<?= $b->outsideSE ? "1" : "0" ?>" live="<?= $b->live ? "1" : "0" ?>" reprise="<?= $b->reprise ? "1" : "0" ?>">
-                                    <start><?= $b->start ?></start>
-                                    <end><?= $b->end ?></end>
-                                    </broadcast>
-                                <?php
-                            }
-                        ?>
-                    
+                            <?php
+                                foreach ($broadcastinchannel as $b) {
+                                    ?>
+                                        <broadcast id="<?= $b->id ?>" episodeID="<?= $b->episodeID ?>" outsideSE="<?= $b->outsideSE ? "1" : "0" ?>" live="<?= $b->live ? "1" : "0" ?>" reprise="<?= $b->reprise ? "1" : "0" ?>">
+                                        <start><?= $b->start ?></start>
+                                        <end><?= $b->end ?></end>
+                                        </broadcast>
+                                    <?php
+                                }
+                            ?>
                         </broadcasts>
                     </channel>
                 <?php
@@ -50,14 +49,13 @@
                     <?php
                         foreach ($episodeinprogram as $e) {
                             ?>
-                                        <episode id="<?= $e->id ?>" season="<?= $e->season ?>" epNumber="<?= $e->epNumber ?>" prodYear="<?= $e->prodYear ?>" duration="<?= $e->duration ?>" language="<?= $e->language ?>" subtitles="<?= $e->subtitles ? "1" : "0"?>">
-                                        <description lang="SE" ><?= $e->descriptionSE ?></description>
-                                        <description lang="EN" ><?= $e->descriptionEN ?></description>
-                                        </episode>
+                                <episode id="<?= $e->id ?>" season="<?= $e->season ?>" epNumber="<?= $e->epNumber ?>" prodYear="<?= $e->prodYear ?>" duration="<?= $e->duration ?>" language="<?= $e->language ?>" subtitles="<?= $e->subtitles ? "1" : "0"?>">
+                                <description lang="SE" ><?= $e->descriptionSE ?></description>
+                                <description lang="EN" ><?= $e->descriptionEN ?></description>
+                                </episode>
                             <?php
                         }
                     ?>            
-
                 </episodes>
             </program>
         <?php
@@ -70,17 +68,17 @@
         foreach ($reprises as $r) {
             $reprisesofbroadcast = $xtvData->getBrReprises($r->originalID);
             ?>
-            <reprise origID="<?= $r->originalID ?>">
-                <?php
-                    foreach ($reprisesofbroadcast as $rb) {
-                        ?>
+                <reprise origID="<?= $r->originalID ?>">
+                    <?php
+                        foreach ($reprisesofbroadcast as $rb) {
+                            ?>
                                 <repRef id="<?= $rb->repriseID ?>"/>
                             <?php
                         }
-                    ?>  
-            </reprise>          
-        <?php
-    }
+                        ?>  
+                </reprise>          
+            <?php
+        }
     ?>        
     </reprises>
 </xtv>
