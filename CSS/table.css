@@ -45,10 +45,13 @@
     min-height: 78px;
 }
 .broadcast-container:nth-child(2) {
-    border-radius: 10px 10px 0 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 .broadcast-container:last-child {
-    border-radius: 0 0 10px 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom: 0;
 }
 
 .timeline__channel.c1 .broadcast-container {
