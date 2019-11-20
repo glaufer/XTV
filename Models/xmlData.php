@@ -48,8 +48,8 @@
                         foreach ($episodeinprogram as $e) {
                             ?>
                                 <episode id="<?= $e->id ?>" season="<?= $e->season ?>" epNumber="<?= $e->epNumber ?>" prodYear="<?= $e->prodYear ?>" duration="<?= $e->duration ?>" language="<?= $e->language ?>" subtitles="<?= $e->subtitles ? "1" : "0" ?>">
-                                <description lang="SE" ><?= $e->descriptionSE ?></description>
-                                <description lang="EN" ><?= $e->descriptionEN ?></description>
+                                <description lang="SE" ><?= $e->descriptionSE ?? 'Ingen beskrivning finns.' ?></description>
+                                <description lang="EN" ><?= $e->descriptionEN ?? 'No description found.' ?></description>
                                 </episode>
                             <?php
                         }
