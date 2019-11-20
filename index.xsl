@@ -82,26 +82,29 @@
         <xsl:variable name="episodeID" select="@episodeID"/>
         <xsl:variable name="episodeData" select="//episode[@id=$episodeID]"/>
         <xsl:variable name="programData" select="$episodeData/../.."/>
-        <div 
-            style="height: {3 * $episodeData/@duration}px" 
-            id="{@id}" 
-            class="broadcast-container xtv1-color"
-            data-programname="{$programData/@nameSE}"
-            data-subname="{$programData/subname[@lang='SE']}"
-            data-description="{$episodeData/description[@lang='SE']}"
-            data-season="{$episodeData/@season}"
-            data-epnumber="{$episodeData/@epNumber}"
-            data-prodyear="{$episodeData/@prodYear}"
-            data-start="{start}"
-            data-duration="{$episodeData/@duration}"
-            data-language="{$episodeData/@language}"
-            data-subtitles="{$episodeData/@subtitles}">
-            <span class="broadcast-time">
-                <xsl:value-of select="substring(start, 12, 5)"/>
-            </span>
-            <h2 class="broadcast-title">
-                <xsl:value-of select="$programData/@nameSE"/>
-            </h2>
+        <div class="broadcast-wrapper" style="height: {3 * $episodeData/@duration}px" >
+            <div 
+                id="{@id}" 
+                class="broadcast-container xtv1-color"
+                data-programname="{$programData/@nameSE}"
+                data-subname="{$programData/subname[@lang='SE']}"
+                data-description="{$episodeData/description[@lang='SE']}"
+                data-season="{$episodeData/@season}"
+                data-epnumber="{$episodeData/@epNumber}"
+                data-prodyear="{$episodeData/@prodYear}"
+                data-start="{start}"
+                data-duration="{$episodeData/@duration}"
+                data-language="{$episodeData/@language}"
+                data-subtitles="{$episodeData/@subtitles}">
+                <div class="broadcast-info">
+                    <span class="broadcast-time">
+                        <xsl:value-of select="substring(start, 12, 5)"/>
+                    </span>
+                    <h2 class="broadcast-title">
+                        <xsl:value-of select="$programData/@nameSE"/>
+                    </h2>
+                </div>
+            </div>
         </div>
     </xsl:template>
 

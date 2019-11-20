@@ -56,11 +56,21 @@
     }
 
 
-    $('.broadcast-container').click(function() {
-        showSidePanel($(this));
+    $('.broadcast-wrapper').click(function() {
+        showSidePanel($(this).find('.broadcast-container'));
     });
 
     $('#close-info-container-button').click(function() {
         hideSidePanel();
+    });
+
+    $('.broadcast-wrapper').each(function() {
+        var element = this;
+        console.log(element.offsetHeight);
+        console.log(element.scrollHeight);
+        if (element.offsetHeight < element.scrollHeight ||
+            element.offsetWidth < element.scrollWidth) {
+            $(this).addClass('content-overflow');
+        }
     });
 })();

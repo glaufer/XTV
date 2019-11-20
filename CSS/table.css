@@ -36,29 +36,65 @@
     border-radius: 10px;
 }
 
-.broadcast-container {
-    height: 150px;
-    min-height: 0;
-    padding: 15px;
-    box-sizing: border-box;
-    border-bottom: 2px solid #eee;
-    overflow: hidden;
-    
+.broadcast-wrapper {
+    background-color: #000;
+    position: relative;
+    border-top: 2px solid #eee;
     cursor: pointer;
-    transition: min-height 0.25s ease;
 }
-.broadcast-container:hover {
-    min-height: 78px;
+.broadcast-wrapper:nth-child(2) {
+    border-top: 0;
 }
-.broadcast-container:nth-child(2) {
+.broadcast-wrapper:nth-child(2) {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    overflow: hidden;
 }
-.broadcast-container:last-child {
+.broadcast-wrapper:last-child {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    border-bottom: 0;
+    overflow: hidden
 }
+
+.broadcast-wrapper.content-overflow:hover {
+    background-color: #fff;
+}
+
+.broadcast-wrapper.content-overflow .broadcast-info {
+    display: none;
+}
+.broadcast-wrapper.content-overflow:hover .broadcast-info {
+    display: block;
+}
+
+.broadcast-wrapper.content-overflow .broadcast-container{
+    left: 0;
+    transition: left 0.25s;
+}
+.broadcast-wrapper.content-overflow:hover .broadcast-container {
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    animation-name: broadcast-slide-in;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+    animation-duration: 0.25s;
+}
+
+
+.broadcast-container {
+    min-height: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    
+    transition: min-height 0.5s ease;
+}
+.broadcast-container:hover {
+    opacity: 0.9;
+}
+
 
 .timeline__channel.c1 .broadcast-container {
     background-color: rgba(140, 11, 75);
@@ -70,9 +106,7 @@
     background-color: rgba(67, 116, 146);
 }
 
-.broadcast-container:hover {
-    opacity: 0.9;
-}
+
 
 .broadcast-title {
     color: #fff;
@@ -133,4 +167,17 @@
 }
 .detailed-info__table td {
     background-color: #555;
+}
+
+
+/* Standard syntax */
+@keyframes broadcast-slide-in {
+    0% {
+        opacity: 0;
+        left: 100%;
+    }
+    100% {
+        opacity: 1;
+        left: 105%;
+    }
 }
