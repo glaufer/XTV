@@ -66,11 +66,15 @@
 
     $('.broadcast-wrapper').each(function() {
         var element = this;
-        console.log(element.offsetHeight);
-        console.log(element.scrollHeight);
         if (element.offsetHeight < element.scrollHeight ||
             element.offsetWidth < element.scrollWidth) {
             $(this).addClass('content-overflow');
         }
+    });
+
+    $('.search-result').on('click', '.search-result-row', function() {
+        var broadCastIID = $(this).data('id');
+        var $broadCastElement = $('#' + broadCastIID);
+        showSidePanel($broadCastElement);
     });
 })();

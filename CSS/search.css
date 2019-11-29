@@ -1,0 +1,36 @@
+.broadcast-search-container {
+    position: relative;
+    margin: 0;
+}
+.broadcast-search-container input {
+    border-radius: 10px;
+    padding: 15px;
+    padding-left: 50px;
+}
+
+.broadcast-search-container input:focus {
+    outline: none;
+}
+
+.broadcast-search-container img {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    height: 50%;
+    transform: translateY(-50%);
+}
+
+.search-result {
+    overflow: scroll;
+    max-height: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.search-result.active {
+    transition: max-height 1s, margin 0.25s, padding 0.25s;
+    display: block;
+    max-height: 200px;
+    padding: 25px;
+    margin-top: 20px;
+}
