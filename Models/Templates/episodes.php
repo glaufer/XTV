@@ -16,12 +16,6 @@
         /** @var int $prodYear */
         public $prodYear;
         
-        /**
-         * @var int $duration
-         * The unit is in minutes
-         */
-        public $duration;
-        
         /** @var string $descriptionSE */
         public $descriptionSE;
         
@@ -41,7 +35,6 @@
             $this->season = (int) $queryRow->season;
             $this->epNumber = (int) $queryRow->epNumber;
             $this->prodYear = (int) $queryRow->prodYear;
-            $this->duration = (int) $queryRow->duration;
             $this->descriptionSE = $queryRow->descriptionSE;
             $this->descriptionEN = $queryRow->descriptionEN;
             $this->language = $queryRow->language;

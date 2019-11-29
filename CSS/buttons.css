@@ -13,6 +13,22 @@
     width: 100%;
 }
 
+.btn {
+    cursor: pointer;
+    padding: 10px 25px;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    color: #555;
+
+    transition: all 0.25s;
+}
+
+.btn:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px)
+}
+
 
 
 /* Standard syntax */

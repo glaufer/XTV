@@ -1,6 +1,10 @@
 <?php
 
     class Broadcast {
+        const SQL_SELECT = "
+            *, TIMESTAMPDIFF(minute, start, end) as duration
+        ";
+
         /** @var string $id */
         public $id;
 
@@ -25,6 +29,8 @@
         /** @var bool $reprise */
         public $reprise;
 
+        /** @var $duration */
+        public $duration;
 
         public function __construct($queryRow)
         {
@@ -36,5 +42,6 @@
             $this->outsideSE = $queryRow->outsideSE == 'Y' ? true : false;
             $this->live = $queryRow->live == 'Y' ? true : false;
             $this->reprise = $queryRow->reprise == 'Y' ? true : false;
+            $this->duration = $queryRow->duration;
         }
     }

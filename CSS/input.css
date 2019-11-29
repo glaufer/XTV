@@ -1,0 +1,24 @@
+.input-container {
+    margin: 10px 0;
+}
+
+.input-container input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+}
+
+.input-description {
+    display: block;
+    margin-bottom: 2px;
+}
+
+.error-text {
+    color: #f00;
+    font-weight: bold;
+}

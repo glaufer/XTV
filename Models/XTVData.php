@@ -69,7 +69,7 @@ class XTVData extends DatabaseModel {
      */
     public function getAllBroadcasts() {
         $result = $this->dbSelectAllSimple(
-            'SELECT *
+            'SELECT ' . Broadcast::SQL_SELECT . '
             FROM broadcasts'
         );
         return $this->createObjectsFromSQL($result, 'Broadcast');
@@ -80,7 +80,7 @@ class XTVData extends DatabaseModel {
      */
     public function getChBroadcasts($channelID) {
         $result = $this->dbSelectAllPrepared(
-            'SELECT *
+            'SELECT ' . Broadcast::SQL_SELECT . '
             FROM broadcasts 
             WHERE channelID = ?', array($channelID)
         );

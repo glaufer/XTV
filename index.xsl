@@ -71,7 +71,7 @@
 
     <xsl:template match="channels/channel">
         <div class="timeline__channel {@id}">
-            <div class="channel-title">
+            <div class="channel-title card">
                 <xsl:value-of select="@name"/>
             </div>
             <xsl:apply-templates match="broadcasts/broadcast"/>
@@ -82,7 +82,7 @@
         <xsl:variable name="episodeID" select="@episodeID"/>
         <xsl:variable name="episodeData" select="//episode[@id=$episodeID]"/>
         <xsl:variable name="programData" select="$episodeData/../.."/>
-        <div class="broadcast-wrapper" style="height: {3 * $episodeData/@duration}px" >
+        <div class="broadcast-wrapper" style="height: {3 * @duration}px" >
             <div 
                 id="{@id}" 
                 class="broadcast-container xtv1-color"
@@ -93,7 +93,7 @@
                 data-epnumber="{$episodeData/@epNumber}"
                 data-prodyear="{$episodeData/@prodYear}"
                 data-start="{start}"
-                data-duration="{$episodeData/@duration}"
+                data-duration="{@duration}"
                 data-language="{$episodeData/@language}"
                 data-subtitles="{$episodeData/@subtitles}">
                 <div class="broadcast-info">
