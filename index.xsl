@@ -10,8 +10,10 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <meta http-equiv="X-UA-Compatible" content="ie=edge" />
             <link rel="stylesheet" href="CSS/main.css" />
+            <link rel="stylesheet" href="CSS/input.css" />
             <link rel="stylesheet" href="CSS/buttons.css" />
             <link rel="stylesheet" href="CSS/table.css" />
+            <link rel="stylesheet" href="CSS/search.css" />
             <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap" rel="stylesheet" />
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <title>XTV</title>
@@ -21,7 +23,16 @@
                 <div class="timeline-axis">
                 </div>
                 <div class="timeline-container">
-                    <xsl:apply-templates/>
+                    <div class="input-container broadcast-search-container">
+                        <img src="Assets/searchIcon.svg" alt=""/>
+                        <input id="search" name="search" type="text" placeholder="Sök"/>
+                    </div>
+                    <div class="card search-result">
+                    
+                    </div>
+                    <div class="timeline-colum-container">
+                        <xsl:apply-templates/>
+                    </div>
                 </div>
             </div>
 
@@ -65,6 +76,7 @@
             </div>
 
             <script src="JS/detailed_info.js"></script>
+            <script src="JS/search.js"></script>
         </body>
     </html>
     </xsl:template>

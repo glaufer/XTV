@@ -121,4 +121,20 @@ class XTVData extends DatabaseModel {
         );
         return $this->createObjectsFromSQL($result, 'Reprise');
     }
+
+    /**
+     * @return object[] All the broadcasts
+     */
+    public function getBroadcastFromSearch($searchString) {
+        $searchStringWithPercent = '%' . $searchString . '%';
+        $result = $this->dbSelectAllPrepared(
+            'SELECT p.nameSE AS name, e.season, e.epNumber, b.start, b.end, b.id
+            FROM broadcasts AS b
+            LEFT JOIN episodes AS e ON e.id = b.episodeID
+            LEFT JOIN programs AS p ON p.id = e.programID
+            WHERE p.nameSE LIKE ? OR p.nameEN LIKE ?', 
+            array($searchStringWithPercent, $searchStringWithPercent)
+        );
+        return $result;
+    }
 }
