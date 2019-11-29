@@ -19,8 +19,8 @@
 .timeline-colum-container {
     border-radius: 10px;
     overflow: hidden;
-
     display: flex;
+    padding-bottom: 50px;
 }
 
 .timeline__channel {
@@ -57,6 +57,7 @@
 
 .broadcast-wrapper.content-overflow:hover {
     background-color: #fff;
+    overflow: visible;
 }
 
 .broadcast-wrapper.content-overflow .broadcast-info {
@@ -66,9 +67,17 @@
     display: block;
 }
 
-.broadcast-wrapper.content-overflow .broadcast-container{
+.broadcast-wrapper.content-overflow .broadcast-container {
     left: 0;
     transition: left 0.25s;
+}
+/* Last child must be animated from the right side */
+.timeline__channel:last-child 
+.broadcast-wrapper.content-overflow 
+.broadcast-container {
+    left: unset;
+    right: 0;
+    transition: right 0.25s;
 }
 .broadcast-wrapper.content-overflow:hover .broadcast-container {
     border-radius: 10px;
@@ -84,7 +93,11 @@
     animation-timing-function: ease;
     animation-duration: 0.25s;
 }
-
+.timeline__channel:last-child 
+.broadcast-wrapper.content-overflow:hover 
+.broadcast-container {
+    animation-name: broadcast-slide-in-right;
+}
 
 .broadcast-container {
     min-height: 100%;
@@ -185,5 +198,16 @@
     100% {
         opacity: 1;
         left: 104%;
+    }
+}
+/* Standard syntax */
+@keyframes broadcast-slide-in-right {
+    0% {
+        opacity: 0;
+        right: 100%;
+    }
+    100% {
+        opacity: 1;
+        right: 104%;
     }
 }
