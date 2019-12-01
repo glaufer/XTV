@@ -104,7 +104,7 @@
             <?= $broadcast->name ?>
           </title>
           <link>
-            <?= $broadcast->id ?>
+            ?bid=<?= $broadcast->id ?>
           </link>
           <description>
             <?= $broadcast->description ?>

@@ -1,4 +1,4 @@
-(function() {
+(function(broadcastIDFromURL) {
     var $detailedInfoContainer = $('.detailed-info-container');
     var $timelineWrapper = $('.timeline-wrapper');
 
@@ -77,4 +77,16 @@
         var $broadCastElement = $('#' + broadCastIID);
         showSidePanel($broadCastElement);
     });
-})();
+
+    $(document).ready(function() {
+        if(broadcastIDFromURL) {
+            var $broadCastElement = $('#' + broadcastIDFromURL);
+            if($broadCastElement.length) {
+                setTimeout(function() {
+                    $broadCastElement.get(0).scrollIntoView();
+                }, 250);
+                showSidePanel($broadCastElement);
+            }
+        }
+    });
+})(broadcastIDFromURL);

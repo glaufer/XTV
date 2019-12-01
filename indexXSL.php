@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns="http://www.w3.org/1999/xhtml">
@@ -15,7 +14,10 @@
             <link rel="stylesheet" href="CSS/table.css" />
             <link rel="stylesheet" href="CSS/search.css" />
             <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap" rel="stylesheet" />
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
             <title>XTV</title>
         </head>
         <body>
@@ -74,7 +76,17 @@
                     </table>
                 </div>
             </div>
-
+            <script>
+                var broadcastIDFromURL = null;
+                <?php 
+                    $broadcastIDFromURL = $_GET['bid'];
+                    if($broadcastIDFromURL != null) {
+                        ?>
+                            broadcastIDFromURL = '<?= $broadcastIDFromURL ?>';
+                        <?php
+                    }
+                ?>
+            </script>
             <script src="JS/detailed_info.js"></script>
             <script src="JS/search.js"></script>
         </body>
