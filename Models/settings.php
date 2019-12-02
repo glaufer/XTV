@@ -6,7 +6,7 @@
 
         public function __construct()
         {
-            $this->language = $_SESSION['language'];
+            $this->language = $_SESSION['language'] ?? 'SE';
             if(!empty($_GET['settingType'])) {
                 $this->setNewSetting();
             }
@@ -21,4 +21,3 @@
     }
     
     $setting = new Setting();
-    
