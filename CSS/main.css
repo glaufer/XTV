@@ -21,6 +21,7 @@ p {
 
 a {
     color: unset;
+    text-decoration: none;
 }
 
 .soft-container {
