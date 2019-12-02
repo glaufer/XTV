@@ -189,6 +189,10 @@
     background-color: #777;
 }
 
+.control-bar {
+    display: flex;
+}
+
 /* Standard syntax */
 @keyframes broadcast-slide-in {
     0% {

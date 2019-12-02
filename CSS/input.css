@@ -22,3 +22,33 @@
     color: #f00;
     font-weight: bold;
 }
+
+.select-container {
+    border-radius: 10px;;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    background-color: #444;
+    overflow: hidden;
+}
+
+.select-option {
+    height: 100%;
+    padding: 0 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border-left: 1px solid #222;
+    cursor: pointer;
+}
+.select-option:hover {
+    background-color: #666;
+}
+.select-option.option-selected {
+    cursor: unset;
+    color: #222;
+    background-color: #fff;
+}

@@ -1,6 +1,8 @@
 .broadcast-search-container {
     position: relative;
     margin: 0;
+    margin-right: 15px;
+    flex: 1;
 }
 .broadcast-search-container input {
     border-radius: 10px;

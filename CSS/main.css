@@ -19,6 +19,10 @@ p {
     line-height: 23px;
 }
 
+a {
+    color: unset;
+}
+
 .soft-container {
     border-radius: 15px;
     background-color: #f0f0f0;

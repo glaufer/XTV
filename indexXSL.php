@@ -1,3 +1,7 @@
+<?php
+    include_once('Models/settings.php');
+?>
+
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns="http://www.w3.org/1999/xhtml">
@@ -15,9 +19,9 @@
             <link rel="stylesheet" href="CSS/search.css" />
             <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;display=swap" rel="stylesheet" />
             <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+                src="https://code.jquery.com/jquery-3.4.1.js"
+                integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+                crossorigin="anonymous"></script>
             <title>XTV</title>
         </head>
         <body>
@@ -25,9 +29,23 @@
                 <div class="timeline-axis">
                 </div>
                 <div class="timeline-container">
-                    <div class="input-container broadcast-search-container">
-                        <img src="Assets/searchIcon.svg" alt=""/>
-                        <input id="search" name="search" type="text" placeholder="Sök"/>
+                    <div class="control-bar">
+                        <div class="input-container broadcast-search-container">
+                            <img src="Assets/searchIcon.svg" alt=""/>
+                            <input id="search" name="search" type="text" placeholder="<?= $setting->language == 'SE' ? 'Sök' : 'Search'?>"/>
+                        </div>
+                        <div class="select-container">
+                            <a 
+                                href="./Models/settings.php?settingType=language&amp;settingValue=SE" 
+                                class="select-option <?= $setting->language == 'SE' ? 'option-selected' :  ''?>">
+                                SE
+                            </a>
+                            <a 
+                                href="./Models/settings.php?settingType=language&amp;settingValue=EN" 
+                                class="select-option <?= $setting->language == 'EN' ? 'option-selected' :  ''?>">
+                                EN
+                            </a>
+                        </div>
                     </div>
                     <div class="card search-result">
                     
@@ -103,16 +121,25 @@
     </xsl:template>
 
     <xsl:template match="broadcasts/broadcast">
-        <xsl:variable name="episodeID" select="@episodeID"/>
-        <xsl:variable name="episodeData" select="//episode[@id=$episodeID]"/>
-        <xsl:variable name="programData" select="$episodeData/../.."/>
-        <div class="broadcast-wrapper" style="height: {3 * @duration}px" >
+    <xsl:variable name="episodeID" select="@episodeID"/>
+    <xsl:variable name="episodeData" select="//episode[@id=$episodeID]"/>
+    <xsl:variable name="programData" select="$episodeData/../.."/>
+    <xsl:variable name="broadcastHeight" select="3 * @duration"/>
+    <xsl:variable name="margin">
+        <xsl:choose>
+            <xsl:when test="position() &lt; 4">
+                <xsl:value-of select="$broadcastHeight"/>
+            </xsl:when>
+            <xsl:otherwise>0</xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+    <div class="broadcast-wrapper" style="height: {$broadcastHeight}px;" >
             <div 
                 id="{@id}" 
                 class="broadcast-container xtv1-color"
                 data-programname="{$programData/@nameSE}"
-                data-subname="{$programData/subname[@lang='SE']}"
-                data-description="{$episodeData/description[@lang='SE']}"
+                data-subname="{$programData/subname[@lang='<?= $setting->language ?>']}"
+                data-description="{$episodeData/description[@lang='<?= $setting->language ?>']}"
                 data-season="{$episodeData/@season}"
                 data-epnumber="{$episodeData/@epNumber}"
                 data-prodyear="{$episodeData/@prodYear}"
@@ -125,7 +152,7 @@
                         <xsl:value-of select="substring(start, 12, 5)"/>
                     </span>
                     <h2 class="broadcast-title">
-                        <xsl:value-of select="$programData/@nameSE"/>
+                        <xsl:value-of select="$programData/@name<?= $setting->language ?>"/>
                     </h2>
                 </div>
             </div>
