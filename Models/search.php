@@ -1,5 +1,6 @@
 <?php
     @include_once "XTVData.php";
+    include_once 'settings.php';
     $xtvData = new XTVData();
     $searchString = $_GET['searchString'];
     $searchResult = $xtvData->getBroadcastFromSearch($searchString);
@@ -12,9 +13,9 @@
     ?>
         <table class="detailed-info__table detailed-info__table--interactive">
             <tr>
-                <th>Namn</th>
-                <th>Säsong</th>
-                <th>Episode</th>
+                <th><?= $setting->language == 'SE' ? 'Namn' : 'Name'?></th>
+                <th><?= $setting->language == 'SE' ? 'Säsong' : 'Season'?></th>
+                <th><?= $setting->language == 'SE' ? 'Avsnitt' : 'Episode'?></th>
                 <th>Start</th>
             </tr>
             <?php

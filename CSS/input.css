@@ -2,6 +2,7 @@
     margin: 10px 0;
 }
 
+.input-container select,
 .input-container input {
     display: block;
     width: 100%;
@@ -13,7 +14,24 @@
     font-size: 15px;
 }
 
+.input-container-checkbox .input-description,
+.input-container-checkbox input {
+    display: inline-block;
+    width: auto;
+}
+
+.input-container-multiple {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: space-between;
+}
+.input-container-multiple input {
+    width: 49%;
+}
+
 .input-description {
+    width: 100%;
     display: block;
     margin-bottom: 2px;
 }
@@ -51,4 +69,9 @@
     cursor: unset;
     color: #222;
     background-color: #fff;
+}
+
+.scroll-select {
+    overflow: scroll;
+    height: 300px;
 }

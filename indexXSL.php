@@ -46,6 +46,15 @@
                                 EN
                             </a>
                         </div>
+                        <a href="Models/RSS/xtvRSS.php" class="btn btn-icon control-bar-btn">
+                            <img src="Assets/rss.svg" alt=""/>
+                        </a>
+                        <a href="https://twitter.com/xtvupdates" class="btn btn-icon control-bar-btn">
+                            <img src="Assets/twitter.svg" alt=""/>
+                        </a>
+                        <a href="login.php" class="btn btn-icon control-bar-btn">
+                            <img src="Assets/cog.svg" alt=""/>
+                        </a>
                     </div>
                     <div class="card search-result">
                     
@@ -65,31 +74,30 @@
                 <div class="detailed-info__part">
                     <h1 class="program-name"></h1>
                     <h3 class="program-sub-name"></h3>
-                    <span>Episode <b class="episode-num"></b> | Säsong <b class="episode-season-num"></b></span>
+                    <span><?= $setting->language == 'SE' ? 'Avsnitt' : 'Episode'?> <b class="episode-num"></b> | <?= $setting->language == 'SE' ? 'Säsong' : 'Season'?> <b class="episode-season-num"></b></span>
                 </div>
 
                 <div class="detailed-info__part">
-                    <h2>Tider</h2>
+                    <h2><?= $setting->language == 'SE' ? 'Tider' : 'Times'?></h2>
                     <p>
                         <span class="episode-time-start"></span><br/>
                         <span class="episode-time-duration"></span> min
                     </p>
                 </div>
                 <div class="detailed-info__part">
-                    <h2>Beskrivning</h2>
+                    <h2><?= $setting->language == 'SE' ? 'Beskrivning' : 'Description'?></h2>
                     <p class="episode-description">
                     </p>
                 </div>
                 <div class="detailed-info__part">
-                    <h2>Övrigt</h2>
-                    <table class="detailed-info__table">
-                        <tr>
-                            <th>Språk</th>
-                            <th>Undertexter</th>
-                        </tr>
+                    <h2><?= $setting->language == 'SE' ? 'Övrigt' : 'Other'?></h2>
+                    <table class="detailed-info__table table-no-border">
                         <tr>
                             <td class="episode-speak-lang"></td>
+                            <td class="episode-live"></td>
+                            <td class="episode-reprise"></td>
                             <td class="episode-subtitles"></td>
+                            <td class="episode-outsideSE"></td>
                         </tr>
                     </table>
                 </div>
@@ -146,7 +154,10 @@
                 data-start="{start}"
                 data-duration="{@duration}"
                 data-language="{$episodeData/@language}"
-                data-subtitles="{$episodeData/@subtitles}">
+                data-subtitles="{$episodeData/@subtitles}"
+                data-live="{@live}"
+                data-worldwide="{@outsideSE}"
+                data-reprise="{@reprise}">
                 <div class="broadcast-info">
                     <span class="broadcast-time">
                         <xsl:value-of select="substring(start, 12, 5)"/>

@@ -24,6 +24,17 @@ a {
     text-decoration: none;
 }
 
+.main-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    max-width: 900px;
+    width: 100%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 .soft-container {
     border-radius: 15px;
     background-color: #f0f0f0;

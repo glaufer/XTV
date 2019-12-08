@@ -17,7 +17,7 @@
     cursor: pointer;
     padding: 10px 25px;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: center;
     color: #555;
 
@@ -29,6 +29,14 @@
     transform: translateY(-3px)
 }
 
+.btn-icon {
+    padding: 15px;
+    box-sizing: border-box;
+    height: 50px;
+}
+.btn-icon img {
+    height: 100%;
+}
 
 
 /* Standard syntax */

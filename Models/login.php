@@ -16,6 +16,7 @@
         return;
     }
     
+    session_start();
     $_SESSION['userID'] = $result->id;
     header('Location: ../admin.php');
 ?>

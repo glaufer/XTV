@@ -12,6 +12,9 @@
         var duration = $broadcastData.data('duration');
         var lang = $broadcastData.data('language');
         var subtitles = $broadcastData.data('subtitles');
+        var live = $broadcastData.data('live');
+        var reprise = $broadcastData.data('reprise');
+        var outsideSE = $broadcastData.data('worldwide');
         $detailedInfoContainer.addClass('active');
         $timelineWrapper.addClass('info-panel-open');
         
@@ -24,8 +27,11 @@
             $('.episode-description').html(description);
             $('.episode-time-start').html(start);
             $('.episode-time-duration').html(duration);
-            $('.episode-speak-lang').html(lang);
-            $('.episode-subtitles').html(subtitles ? 'JA' : 'NEJ');
+            $('.episode-speak-lang').html(lang ? '<img src="Assets/flags/' + lang + '.png" alt=""/>' : '');
+            $('.episode-subtitles').html(subtitles ? '<img src="Assets/subtitles.svg" alt=""/>' : '');
+            $('.episode-live').html(live ? '<img src="Assets/live.svg" alt=""/>' : '');
+            $('.episode-reprise').html(reprise ? '<img src="Assets/reprise.svg" alt=""/>' : '');
+            $('.episode-outsideSE').html(outsideSE ? '<img src="Assets/earth.svg" alt=""/>' : '');
             showInfoParts($('.detailed-info__part'), 0);
         }, 250);
     }

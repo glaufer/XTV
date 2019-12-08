@@ -1,6 +1,7 @@
 <?php
 
 @require_once 'database.php';
+@require_once 'settings.php';
 @require_once 'Templates/episodes.php';
 @require_once 'Templates/channels.php';
 @require_once 'Templates/programs.php';
@@ -36,8 +37,9 @@ class XTVData extends DatabaseModel {
      */
     public function getAllEpisodes() {
         $result = $this->dbSelectAllSimple(
-            'SELECT *
-            FROM episodes'
+            'SELECT e.*, p.nameSE AS name
+            FROM episodes AS e
+            LEFT JOIN programs AS p ON p.id = programID'
         );
         return $this->createObjectsFromSQL($result, 'Episode');
     }
@@ -128,13 +130,38 @@ class XTVData extends DatabaseModel {
     public function getBroadcastFromSearch($searchString) {
         $searchStringWithPercent = '%' . $searchString . '%';
         $result = $this->dbSelectAllPrepared(
-            'SELECT p.nameSE AS name, e.season, e.epNumber, b.start, b.end, b.id
-            FROM broadcasts AS b
-            LEFT JOIN episodes AS e ON e.id = b.episodeID
-            LEFT JOIN programs AS p ON p.id = e.programID
-            WHERE p.nameSE LIKE ? OR p.nameEN LIKE ?', 
+            $this->getNestedBroadcastSelect() .
+            'WHERE p.nameSE LIKE ? OR p.nameEN LIKE ?', 
             array($searchStringWithPercent, $searchStringWithPercent)
         );
         return $result;
+    }
+
+    public function getAllNestedBroadcastData() {
+        return $this->dbSelectAllSimple(
+            $this->getNestedBroadcastSelect() .
+            'ORDER BY name'
+        );
+    }
+
+    /**
+     * Getting the string to select
+     * programn data and episode data as a broadcast object
+     */
+    private function getNestedBroadcastSelect() {
+        return '
+            SELECT 
+                c.name AS channel,
+                p.nameSE AS name, 
+                e.season, 
+                e.epNumber, 
+                b.start, 
+                b.end, 
+                b.id
+            FROM broadcasts AS b
+            LEFT JOIN episodes AS e ON e.id = b.episodeID
+            LEFT JOIN programs AS p ON p.id = e.programID
+            RIGHT JOIN channels AS c ON c.id = b.channelID
+        ';
     }
 }

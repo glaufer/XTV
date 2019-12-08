@@ -5,6 +5,9 @@
         public $id;
 
         /** @var string $programID */
+        public $name;
+
+        /** @var string $programID */
         public $programID;
         
         /** @var int $season */
@@ -31,6 +34,7 @@
         public function __construct($queryRow)
         {
             $this->id = $queryRow->id;
+            $this->name = $queryRow->name;
             $this->programID = $queryRow->programID;
             $this->season = (int) $queryRow->season;
             $this->epNumber = (int) $queryRow->epNumber;

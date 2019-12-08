@@ -33,6 +33,10 @@
 
 .channel-title {
     margin: 25px 0;
+    text-align: center;
+}
+.channel-title img {
+    width: 100px;
 }
 
 .broadcast-wrapper {
@@ -168,18 +172,22 @@
 .detailed-info__table {
     width: 100%;
     margin-top: 5px;
-    border-collapse: collapse;
     border-radius: 10px;
 }
 .detailed-info__table th,  .detailed-info__table td{
     padding: 10px;
     text-align: left;
-    border: 1px solid #333;
     margin: 0;
+    border-collapse: collapse;
     background-color: #666;
 }
 .detailed-info__table td {
     background-color: #555;
+}
+
+.detailed-info__table td img {
+    position: relative;
+    max-height: 35px;
 }
 
 .detailed-info__table--interactive tr {
@@ -189,8 +197,28 @@
     background-color: #777;
 }
 
+.table-no-border {
+    table-layout: fixed ;
+    width: 100% ;
+}
+.table-no-border td {
+    text-align: center;
+}
+
 .control-bar {
     display: flex;
+}
+
+.control-bar-btn {
+    margin-left: 10px;
+}
+
+.table-buttons {
+    display: flex;
+    justify-content: center;
+}
+.table-buttons .btn {
+    margin: 0px 5px;
 }
 
 /* Standard syntax */
