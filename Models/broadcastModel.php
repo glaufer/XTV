@@ -19,8 +19,9 @@
             );
         }
 
-        public function addNewBroadcast($id, $channel, $episodeID, $start, $end, $outsideSE, $live, $reprise) {
-            
+        public function addNewBroadcast($channel, $episodeID, $start, $end, $outsideSE, $live, $reprise) {
+            $id = $this->generateUniqueBroadcastID($channel);
+
             // Add new broadcast
             $this->dbExecutePrepared(
                 'INSERT INTO `broadcasts` (`id`, `channelID`, `episodeID`, `start`, `end`, `outsideSE`, `live`, `reprise`) 
@@ -40,6 +41,21 @@
                 
             }
 
+        }
+
+        private function generateUniqueBroadcastID($channelID) {
+            $result = $this->dbSelectPrepared(
+                'SELECT id
+                FROM broadcasts
+                WHERE channelID = ?
+                ORDER BY id DESC', array($channelID), PDO::FETCH_COLUMN
+            );
+
+            $newestBroadcastID = intval(substr($result, 2));
+            $channelID = intval(substr($result, 1, 1));
+            $newestBroadcastID++;
+
+            return 'b' . $channelID . $newestBroadcastID;
         }
 
         public function deleteBroadcast($id) {

@@ -22,10 +22,6 @@
         <form method="POST" action="Controllers/broadcastController.php">
             <input type="hidden" value="add" name="action">
             <div class="input-container">
-                <span class="input-description">ID</span>
-                <input name="id" type="text">
-            </div>
-            <div class="input-container">
                 <span class="input-description">Episode</span>
                 <select name="episodeID">
                     <?php

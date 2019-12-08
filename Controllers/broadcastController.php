@@ -8,7 +8,6 @@
             $start = $_POST['date_start'] . ' ' . $_POST['time_start'] . ':00';
             $end = $_POST['date_end'] . ' ' . $_POST['time_end'] . ':00';
             $broadcastModel->addNewBroadcast(
-                $_POST['id'],
                 $_POST['channelID'],
                 $_POST['episodeID'],
                 $start,
