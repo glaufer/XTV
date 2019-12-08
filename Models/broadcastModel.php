@@ -1,4 +1,5 @@
 <?php
+    include_once '../Config/twitterKeys.php';
     include_once 'database.php';
     use DG\Twitter\Twitter;
     require_once 'Twitter/src/twitter.class.php';
@@ -10,12 +11,12 @@
         public function __construct()
         {
             parent::__construct();
-            
-            $consumerKey = "4cannoBhIpuzvF6vNXZ3h01eW";
-            $consumerSecret = "7WG7ZsLlkb7wevfVi5Kp1hpkSvwwsdlS48vvGMgabfz7AHnZEr";
-            $accessToken = "1191770009560846337-8UH6cvV9PKqyHt23T21XRFvHnoAiar";
-            $accessTokenSecret = "4QsDGHRtrKlKaKKIH7on6TazjwZbAXDbXo96bVhNGLIpW";
-            $this->twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+            $this->twitter = new Twitter(
+                TwitterKeys::CONSUMERKEY, 
+                TwitterKeys::CONSUMERSECRET, 
+                TwitterKeys::ACCESSTOKEN,
+                TwitterKeys::ACCESSTOKENSECRET
+            );
         }
 
         public function addNewBroadcast($id, $channel, $episodeID, $start, $end, $outsideSE, $live, $reprise) {
