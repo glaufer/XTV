@@ -9,10 +9,17 @@
 @require_once 'Templates/reprises.php';
 
 class XTVData extends DatabaseModel {
+
+    /**
+     * @var Setting
+     */
+    private $settings;
+
     public function __construct()
     {
         // Parent connects to database
         parent::__construct();
+        $this->settings = new Setting();
     }
 
     /**
@@ -152,7 +159,7 @@ class XTVData extends DatabaseModel {
         return '
             SELECT 
                 c.name AS channel,
-                p.nameSE AS name, 
+                p.name' . $this->settings->language . ' AS name, 
                 e.season, 
                 e.epNumber, 
                 b.start, 
