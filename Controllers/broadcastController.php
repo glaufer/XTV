@@ -7,9 +7,6 @@
         case 'add':
             $start = $_POST['date_start'] . ' ' . $_POST['time_start'] . ':00';
             $end = $_POST['date_end'] . ' ' . $_POST['time_end'] . ':00';
-            echo '<pre>';
-            print_r($_POST);
-            echo '</pre>';
             $broadcastModel->addNewBroadcast(
                 $_POST['id'],
                 $_POST['channelID'],
@@ -20,7 +17,6 @@
                 !empty($_POST['live']) ? 'Y' : 'N',
                 !empty($_POST['reprise']) ? 'Y' : 'N'
             );
-            exit;
             header('Location: ../index.php');
             break;
         case 'delete':

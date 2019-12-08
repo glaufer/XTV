@@ -25,6 +25,15 @@
     <div class="main-container">
         <h1>Admin</h1>
         <br/>
+        <div class="btn-row-container">
+            <a class="btn" href="Controllers/loginController.php?action=logout">
+                <div>Logga ut</div>
+            </a>
+            <a class="btn" href="index.php">
+                <div>Gå tillbaka till startsidan</div>
+            </a>
+        </div>
+        <br>
         <a href="manageBroadcast.php">
             <div class="btn">Lägg till sänding</div>
         </a>
@@ -48,7 +57,7 @@
                             <td><?= $data->epNumber?></td>
                             <td><?= $data->start?></td>
                             <td class="table-buttons">
-                                <form method="POST" action="Controller/broadcastController.php">
+                                <form method="POST" action="Controllers/broadcastController.php">
                                     <input name="action" type="hidden" value="delete">
                                     <input name="id" type="hidden" value="<?= $data->id ?>">
                                     <button type="submit" class="btn btn-icon">

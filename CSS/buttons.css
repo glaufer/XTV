@@ -20,7 +20,6 @@
     border-radius: 10px;
     text-align: center;
     color: #555;
-
     transition: all 0.25s;
 }
 
@@ -36,6 +35,18 @@
 }
 .btn-icon img {
     height: 100%;
+}
+
+.btn-row-container {
+    display: flex;
+    justify-content: space-between;
+}
+.btn-row-container .btn {
+    width: 100%;
+    margin-right: 2%;
+}
+.btn-row-container .btn:last-child {
+    margin-right: 0;
 }
 
 

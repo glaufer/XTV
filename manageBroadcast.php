@@ -19,7 +19,7 @@
 </head>
 <body>
     <div class="main-container card">
-        <form method="POST" action="Controller/broadcastController.php">
+        <form method="POST" action="Controllers/broadcastController.php">
             <input type="hidden" value="add" name="action">
             <div class="input-container">
                 <span class="input-description">ID</span>
