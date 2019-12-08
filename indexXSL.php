@@ -114,7 +114,7 @@
     <xsl:template match="channels/channel">
         <div class="timeline__channel {@id}">
             <div class="channel-title card">
-                <xsl:value-of select="@name"/>
+                <img src="Assets/{@name}.svg" alt=""/>
             </div>
             <xsl:apply-templates match="broadcasts/broadcast"/>
         </div>
