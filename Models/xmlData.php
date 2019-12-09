@@ -19,9 +19,18 @@
                             <?php
                                 foreach ($broadcastinchannel as $b) {
                                     ?>
-                                        <broadcast id="<?= $b->id ?>" duration="<?= $b->duration ?>" episodeID="<?= $b->episodeID ?>" outsideSE="<?= $b->outsideSE ? "1" : "0" ?>" live="<?= $b->live ? "1" : "0" ?>" reprise="<?= $b->reprise ? "1" : "0" ?>">
+                                        <broadcast 
+                                            id="<?= $b->id ?>" 
+                                            duration="<?= $b->duration ?>" 
+                                            episodeID="<?= $b->episodeID ?>" 
+                                            outsideSE="<?= $b->outsideSE ? "1" : "0" ?>" 
+                                            live="<?= $b->live ? "1" : "0" ?>" 
+                                            reprise="<?= $b->reprise ? "1" : "0" ?>">
                                             <start><?= $b->start ?></start>
                                             <end><?= $b->end ?></end>
+                                            <timeBetweenEarliestBroadcast>
+                                                <?= $b->minutesFromEarliestBroadcast() ?>
+                                            </timeBetweenEarliestBroadcast>
                                         </broadcast>
                                     <?php
                                 }
@@ -47,9 +56,14 @@
                     <?php
                         foreach ($episodeinprogram as $e) {
                             ?>
-                                <episode id="<?= $e->id ?>" season="<?= $e->season ?>" epNumber="<?= $e->epNumber ?>" prodYear="<?= $e->prodYear ?>" language="<?= $e->language ?>" subtitles="<?= $e->subtitles ? "1" : "0" ?>">
-                                <description lang="SE" ><?= $e->descriptionSE ?? 'Ingen beskrivning finns.' ?></description>
-                                <description lang="EN" ><?= $e->descriptionEN ?? 'No description found.' ?></description>
+                                <episode id="<?= $e->id ?>" 
+                                    season="<?= $e->season ?>" 
+                                    epNumber="<?= $e->epNumber ?>" 
+                                    prodYear="<?= $e->prodYear ?>" 
+                                    language="<?= $e->language ?>" 
+                                    subtitles="<?= $e->subtitles ? "1" : "0" ?>">
+                                    <description lang="SE" ><?= $e->descriptionSE ?? 'Ingen beskrivning finns.' ?></description>
+                                    <description lang="EN" ><?= $e->descriptionEN ?? 'No description found.' ?></description>
                                 </episode>
                             <?php
                         }

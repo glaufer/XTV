@@ -1,3 +1,13 @@
+<?php
+    require_once 'Models/loginModel.php';
+    $loginModel = new LoginModel();
+
+    // Check if the user is already logged in
+    if($loginModel->isLoggedIn()) {
+        header('Location: admin.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +25,7 @@
 <body>
     <div class="center-content">
         <div class="card login-container">
-            <form action="Models/login.php" method="POST">
+            <form action="Controllers/loginController.php?action=login" method="POST">
                 <h2>Logga in</h2>
                 <div class="input-container">
                     <span class="input-description">E-post</span>
@@ -26,12 +36,14 @@
                     <input name="password" type="password" placeholder="Lösenord">
                 </div>
                 <?php
-                    if($_GET['status'] == 'wrong') {
-                        ?>
-                            <p class="error-text">
-                                Fel lösen eller e-post
-                            </p>
-                        <?php
+                    if(!empty($_GET['status'])) {
+                        if($_GET['status'] == 'wrong') {
+                            ?>
+                                <p class="error-text">
+                                    Fel lösen eller e-post
+                                </p>
+                            <?php
+                        }
                     }
                     else {
                         ?>

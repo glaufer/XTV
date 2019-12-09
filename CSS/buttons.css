@@ -17,10 +17,9 @@
     cursor: pointer;
     padding: 10px 25px;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: center;
     color: #555;
-
     transition: all 0.25s;
 }
 
@@ -29,6 +28,26 @@
     transform: translateY(-3px)
 }
 
+.btn-icon {
+    padding: 15px;
+    box-sizing: border-box;
+    height: 50px;
+}
+.btn-icon img {
+    height: 100%;
+}
+
+.btn-row-container {
+    display: flex;
+    justify-content: space-between;
+}
+.btn-row-container .btn {
+    width: 100%;
+    margin-right: 2%;
+}
+.btn-row-container .btn:last-child {
+    margin-right: 0;
+}
 
 
 /* Standard syntax */
