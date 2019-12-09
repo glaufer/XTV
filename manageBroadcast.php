@@ -1,7 +1,11 @@
 <?php
     include_once 'Models/XTVData.php';
     include_once 'Models/settings.php';
+    include_once 'Models/loginModel.php';
     $xtvData = new XTVData();
+    $loginModel = new LoginModel();
+
+    $loginModel->preventUnauthorizedAccess();
 ?>
 
 <!DOCTYPE html>

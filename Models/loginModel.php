@@ -29,6 +29,7 @@
 
             session_start();
             $_SESSION['userID'] = $result->id;
+            session_write_close();
             return true;
         }
 
@@ -39,6 +40,7 @@
         {
             session_start();
             $_SESSION['userID'] = null;
+            session_write_close();
         }
 
         /**
@@ -49,6 +51,19 @@
         {
             session_start();
             return empty($_SESSION['userID']) != true;
+            session_write_close();
+        }
+
+        /**
+         * Moves the user to the login page if she/he are
+         * not logged in
+         */
+        public function preventUnauthorizedAccess() 
+        {
+            if (!$this->isLoggedIn()) {
+                header('Location: login.php');
+                exit;
+            }
         }
     }
 ?>
