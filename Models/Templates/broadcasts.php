@@ -32,6 +32,8 @@
         /** @var $duration */
         public $duration;
 
+        public $earliestBroadcast;
+
         public function __construct($queryRow)
         {
             $this->id = $queryRow->id;
@@ -43,5 +45,10 @@
             $this->live = $queryRow->live == 'Y' ? true : false;
             $this->reprise = $queryRow->reprise == 'Y' ? true : false;
             $this->duration = $queryRow->duration;
+            $this->earliestBroadcast = $queryRow->earliestBroadcast ?? null;
+        }
+
+        public function minutesFromEarliestBroadcast() {
+            return intval(round(abs(strtotime($this->start) - strtotime($this->earliestBroadcast)) / 60));
         }
     }

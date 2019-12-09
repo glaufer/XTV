@@ -2,7 +2,7 @@
     include_once('Models/settings.php');
 ?>
 
-<xsl:stylesheet version="1.0"
+<xsl:stylesheet version="2.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns="http://www.w3.org/1999/xhtml">
 
@@ -56,9 +56,7 @@
                             <img src="Assets/cog.svg" alt=""/>
                         </a>
                     </div>
-                    <div class="card search-result">
-                    
-                    </div>
+                    <div class="card search-result"></div>
                     <div class="timeline-colum-container">
                         <xsl:apply-templates/>
                     </div>
@@ -124,28 +122,32 @@
             <div class="channel-title card">
                 <img src="Assets/{@name}.svg" alt=""/>
             </div>
-            <xsl:apply-templates match="broadcasts/broadcast"/>
+            <div class="timeline-broadcasts">
+                <xsl:apply-templates match="broadcasts/broadcast"/>
+            </div>
         </div>
     </xsl:template>
 
     <xsl:template match="broadcasts/broadcast">
-    <xsl:variable name="episodeID" select="@episodeID"/>
-    <xsl:variable name="episodeData" select="//episode[@id=$episodeID]"/>
-    <xsl:variable name="programData" select="$episodeData/../.."/>
-    <xsl:variable name="broadcastHeight" select="3 * @duration"/>
-    <xsl:variable name="margin">
-        <xsl:choose>
-            <xsl:when test="position() &lt; 4">
-                <xsl:value-of select="$broadcastHeight"/>
-            </xsl:when>
-            <xsl:otherwise>0</xsl:otherwise>
-        </xsl:choose>
-    </xsl:variable>
-    <div class="broadcast-wrapper" style="height: {$broadcastHeight}px;" >
+        <xsl:variable name="episodeID" select="@episodeID"/>
+        <xsl:variable name="episodeData" select="//episode[@id=$episodeID]"/>
+        <xsl:variable name="programData" select="$episodeData/../.."/>
+        <xsl:variable name="broadcastHeight" select="3 * @duration"/>
+        <xsl:variable name="margintop" select="3 * number(timeBetweenEarliestBroadcast)"/>
+        
+        <xsl:variable name="margin">
+            <xsl:choose>
+                <xsl:when test="position() &lt; 4">
+                    <xsl:value-of select="$broadcastHeight"/>
+                </xsl:when>
+                <xsl:otherwise>0</xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <div class="broadcast-wrapper" style="height: {$broadcastHeight}px; top: {$margintop}px" >
             <div 
                 id="{@id}" 
                 class="broadcast-container xtv1-color"
-                data-programname="{$programData/@nameSE}"
+                data-programname="{$programData/@name<?= $setting->language ?>}"
                 data-subname="{$programData/subname[@lang='<?= $setting->language ?>']}"
                 data-description="{$episodeData/description[@lang='<?= $setting->language ?>']}"
                 data-season="{$episodeData/@season}"

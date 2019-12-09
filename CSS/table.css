@@ -39,16 +39,22 @@
     width: 100px;
 }
 
-.broadcast-wrapper {
-    background-color: #000;
+.timeline-broadcasts {
     position: relative;
+    height: 100000px;
+}
+
+.broadcast-wrapper {
+    position: absolute;
+    width: 100%;
+    background-color: #000;
     border-top: 2px solid #eee;
     cursor: pointer;
 }
-.broadcast-wrapper:nth-child(2) {
+.broadcast-wrapper:nth-child(1) {
     border-top: 0;
 }
-.broadcast-wrapper:nth-child(2) {
+.broadcast-wrapper:nth-child(1) {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     overflow: hidden;

@@ -18,10 +18,12 @@
             );
             header('Location: ../index.php');
             break;
+
         case 'delete':
             $broadcastModel->deleteBroadcast($_POST['id']);
             header('Location: ../admin.php');
             break;
+            
         default:
             # code...
             break;

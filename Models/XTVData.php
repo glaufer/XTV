@@ -93,7 +93,21 @@ class XTVData extends DatabaseModel {
             FROM broadcasts 
             WHERE channelID = ?', array($channelID)
         );
+        $this->applyEarliestBroadcastDate($result);
         return $this->createObjectsFromSQL($result, 'Broadcast');
+    }
+
+    private function applyEarliestBroadcastDate($objects) {
+        $earliestBroadcastDate = $this->dbSelectPrepared(
+            'SELECT start
+            FROM broadcasts 
+            ORDER BY start
+            LIMIT 1', array(), PDO::FETCH_COLUMN
+        );
+
+        foreach ($objects as $object) {
+            $object->earliestBroadcast = $earliestBroadcastDate;
+        }
     }
 
     /**
