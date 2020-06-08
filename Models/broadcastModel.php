@@ -12,10 +12,10 @@
         {
             parent::__construct();
             $this->twitter = new Twitter(
-                TwitterKeys::CONSUMERKEY, 
-                TwitterKeys::CONSUMERSECRET, 
-                TwitterKeys::ACCESSTOKEN,
-                TwitterKeys::ACCESSTOKENSECRET
+                getenv("TWITTER_CONSUMER_KEY") ?? TwitterKeys::CONSUMERKEY, 
+                getenv("TWITTER_CONSUMER_SECRET") ?? TwitterKeys::CONSUMERSECRET, 
+                getenv("TWITTER_ACCESSTOKEN") ?? TwitterKeys::ACCESSTOKEN,
+                getenv("TWITTER_ACCESSTOKEN_SECRET") ?? TwitterKeys::ACCESSTOKENSECRET
             );
         }
 
