@@ -24,12 +24,13 @@ class DatabaseModel {
      */
     private function connectToDatabase() 
     {
+        $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
         $this->connection = new PDO(
-            'mysql:host=' . SQLConfig::DBHost . 
-            ';dbname=' . SQLConfig::DBName . 
+            'mysql:host=' . ($url["host"] ?? SQLConfig::DBHost) . 
+            ';dbname=' . (substr($url["path"], 1) ?? SQLConfig::DBName) . 
             ';charset=utf8',
-            SQLConfig::username,
-            SQLConfig::password
+            ($url["user"] ?? SQLConfig::username),
+            ($url["pass"] ?? SQLConfig::password)
         );
         $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }

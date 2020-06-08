@@ -27,7 +27,9 @@
                 return false;
             }
 
-            session_start();
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
             $_SESSION['userID'] = $result->id;
             session_write_close();
             return true;
@@ -38,7 +40,9 @@
          */
         public function logout() 
         {
-            session_start();
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
             $_SESSION['userID'] = null;
             session_write_close();
         }
@@ -49,7 +53,9 @@
          */
         public function isLoggedIn() 
         {
-            session_start();
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
             return empty($_SESSION['userID']) != true;
             session_write_close();
         }
