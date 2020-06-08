@@ -120,7 +120,7 @@
     <xsl:template match="channels/channel">
         <div class="timeline__channel {@id}">
             <div class="channel-title card">
-                <img src="Assets/{@name}.svg" alt=""/>
+                <img src="Assets/{@name}.png" alt=""/>
             </div>
             <div class="timeline-broadcasts">
                 <xsl:apply-templates match="broadcasts/broadcast"/>

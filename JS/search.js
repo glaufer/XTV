@@ -51,7 +51,6 @@
         else {
             $searchResultElement.html(content);
         }
-
         toggleSearchResultVisibility(true);
     }
 

@@ -23,7 +23,7 @@
 }
 
 .search-result {
-    overflow: scroll;
+    overflow-y: scroll;
     max-height: 0px;
     padding: 0px;
     margin: 0px;
